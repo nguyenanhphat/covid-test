@@ -29,8 +29,36 @@ th {
 
 .table-custom tbody tr:hover {
   background: #ccc;
-  cursor: pointer;
 }
 .tbody-empty {
   height: 100vh;
+}
+
+.btn-primary,
+.btn-danger {
+  padding: 15px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.item-bookmarked {
+  background: linen;
+}
+
+.btn-primary {
+  background: #8aca2b;
+}
+
+.btn-danger {
+  background: red;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
+.mb5 {
+  margin-bottom: 5px;
 }
