@@ -38,7 +38,6 @@ const CovidDetail = ({
 				
 				<div className="covid-period-time">
 					<h2 className="header-total">Total covid case in {covidInfo[0]?.name?.common}</h2>
-					
 					{covidPeriodTime.length ? (
 						<div className="content-chart">
 							<ResponsiveContainer width="100%" height="100%">

@@ -20,11 +20,12 @@ th {
 
 .table-custom th {
   padding: 15px;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .table-custom td {
   padding: 12px;
+  font-size: 15px;
 }
 
 .table-custom tbody tr:hover {

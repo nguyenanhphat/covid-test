@@ -17,14 +17,14 @@
 }
 
 .info-covid .info-name span {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 500;
   margin-left: 5px;
 }
 
 .label-info {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   margin: 0;
   margin-bottom: 10px;
 }
@@ -32,7 +32,7 @@
 .value-info {
   font-weight: 700;
   color: #696969;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .covid-period-time .header-total {

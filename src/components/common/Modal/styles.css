@@ -35,7 +35,7 @@
 }
 
 .modal-main .header-modal .title {
-  font-size: 35px;
+  font-size: 25px;
   font-weight: 700;
   color: #8aca2b;
 }
@@ -51,7 +51,7 @@
 
 @media only screen and (max-width: 600px) {
   .modal-main .header-modal .title {
-    font-size: 30px;
+    font-size: 20px;
   }
   .modal-main {
     width: 90% !important;
