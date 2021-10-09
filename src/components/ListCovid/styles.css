@@ -1,0 +1,33 @@
+.wrapper-table {
+  position: relative;
+  overflow: auto;
+}
+.table-custom {
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  width: 100%;
+}
+.table-custom thead {
+  background: #8aca2b;
+  color: white;
+}
+
+.table-custom td,
+th {
+  text-align: left;
+  text-align: center;
+}
+
+.table-custom th {
+  padding: 15px;
+  font-size: 20px;
+}
+
+.table-custom td {
+  padding: 12px;
+}
+
+.table-custom tbody tr:hover {
+  background: #ccc;
+  cursor: pointer;
+}
