@@ -5,12 +5,13 @@ const ModalCustom = ({
   show,
   children,
   title,
-  onClose
+  onClose,
+  width = '50%'
 }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
   return (
     <div className={showHideClassName}>
-      <section className="modal-main">
+      <section style={{ width: width}} className="modal-main">
         <div className="header-modal">
           <span className="title">{title}</span>
           <span className="icon-close" onClick={onClose}>

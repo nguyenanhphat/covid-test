@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { CovidDetail } from '../';
 import { API_DETAIL, API_DETAIL_PERIOD_TIME, KEY_BOOKMARK, KEY_DELETE } from './../../constants';
-import Loading from '../common/Loading/index';
+import Loading from '../common/Loading';
+import ModalConfirm from '../common/ModalConfirm';
 import { formatDate } from '../../utils/dateHelper';
 import { numberWithCommas } from '../../utils/numberHelper';
 import './styles.css';
@@ -12,9 +13,15 @@ const ListCovid = ({
   toggleLoading
 }) => {
   const [showModal, setShowModal] = useState(false);
+
+  const [showModalConfirm, setShowModalConfirm] = useState(false);
+  const idSelected = useRef(null);
+
   const [detailData, setDetailData] = useState([]);
+  
   const [bookmarkData, setBookmarkData] = useState(localStorage.getItem(KEY_BOOKMARK) ? JSON.parse(localStorage.getItem(KEY_BOOKMARK)) : {});
   const [deleteData, setDeleteData] = useState(localStorage.getItem(KEY_DELETE) ? JSON.parse(localStorage.getItem(KEY_DELETE)) : {});
+  
   const _handleShowDetail = (item) => {
     toggleLoading();
     Promise.all([
@@ -42,18 +49,37 @@ const ListCovid = ({
     localStorage.setItem(KEY_BOOKMARK, JSON.stringify(newData));
   }
 
-  const _handleDelete = (item) => {
+  const _handleShowModalConfirm = (item) => {
+    _toggleModalConfirm();
+    idSelected.current = item.ID;
+  }
+
+  const _handleDelete = () => {
+    if (!idSelected.current) {
+      return;
+    }
+
     const newData = {
       ...deleteData,
-      [item.ID]: true
+      [idSelected.current]: true
     };
     setDeleteData(newData);
     localStorage.setItem(KEY_DELETE, JSON.stringify(newData));
+    _toggleModalConfirm();
+  };
+
+  const _toggleModalConfirm = () => {
+    setShowModalConfirm(prev => !prev);
   }
-  console.log('deleteId---:', deleteData);
+
   return (
     <div className="root-list-covid">
       {showModal && <CovidDetail toggleModal={_toggleModal} detailData={detailData} />}
+      <ModalConfirm
+        show={showModalConfirm}
+        onClose={_toggleModalConfirm} 
+        onConfirm={_handleDelete} 
+      />
       <div className="wrapper-table">
         <table className="table-custom">
           <thead>
@@ -89,7 +115,7 @@ const ListCovid = ({
                           >Bookmark</button>
                         )}
                         <button 
-                          onClick={() => _handleDelete(item)}
+                          onClick={() => _handleShowModalConfirm(item)}
                           className="btn-danger mb5"
                         >Remove</button>
                       </td>
