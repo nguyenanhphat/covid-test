@@ -31,3 +31,6 @@ th {
   background: #ccc;
   cursor: pointer;
 }
+.tbody-empty {
+  height: 100vh;
+}

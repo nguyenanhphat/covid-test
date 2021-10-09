@@ -46,17 +46,19 @@ const ListCovid = ({
               <th>Total recovered</th>
             </tr>
           </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr onClick={() => _handleShowDetail(item)} key={index}>
-                <td>{formatDate(item.Date)}</td>
-                <td>{item.Country}</td>
-                <td>{numberWithCommas(item.TotalConfirmed)}</td>
-                <td>{numberWithCommas(item.TotalDeaths)}</td>
-                <td>{numberWithCommas(item.TotalRecovered)}</td>
-              </tr>
-            ))}
-          </tbody>
+          {data.length ? (
+            <tbody>
+              {data.map((item, index) => (
+                <tr onClick={() => _handleShowDetail(item)} key={index}>
+                  <td>{formatDate(item.Date)}</td>
+                  <td>{item.Country}</td>
+                  <td>{numberWithCommas(item.TotalConfirmed)}</td>
+                  <td>{numberWithCommas(item.TotalDeaths)}</td>
+                  <td>{numberWithCommas(item.TotalRecovered)}</td>
+                </tr>
+              ))}
+            </tbody>
+          ) : <tbody className="tbody-empty"></tbody>}
         </table>
         {loading && <Loading />}
       </div>

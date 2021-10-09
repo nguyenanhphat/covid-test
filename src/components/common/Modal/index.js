@@ -14,7 +14,7 @@ const ModalCustom = ({
         <div className="header-modal">
           <span className="title">{title}</span>
           <span className="icon-close" onClick={onClose}>
-            <img width="30" src='/images/cancel.png' alt="icon-close" />
+            <img width="30" src='images/cancel.png' alt="icon-close" />
           </span>
         </div>
         <div className="content-modal">

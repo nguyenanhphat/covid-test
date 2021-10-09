@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ListCovid } from './components';
+import { API_SUMMARY } from './constants/index';
 import './App.css';
-const API_SUMMARY = 'https://api.covid19api.com/summary';
 
 function App() {
   const [listCovidData, setListCovidData] = useState([]);
@@ -12,9 +12,9 @@ function App() {
     fetch(API_SUMMARY)
       .then(res => res.json())
       .then(data => {
-        const contries = data.Countries;
-        if (contries && contries.length) {
-          contries.sort((firstEl, secondEl) => {
+        const countries = data.Countries;
+        if (countries && countries.length) {
+          countries.sort((firstEl, secondEl) => {
             return (
               secondEl.TotalConfirmed - firstEl.TotalConfirmed ||
               secondEl.TotalDeaths - firstEl.TotalDeaths ||
@@ -22,7 +22,7 @@ function App() {
             );
           });
         }
-        setListCovidData(contries);
+        setListCovidData(countries);
         _toggleLoading();
       });
   }, []);
